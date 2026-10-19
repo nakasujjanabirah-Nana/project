@@ -1,0 +1,129 @@
+{
+    "accounts": [
+        {},
+        {
+            "first_name": "owen",
+            "last_name": "ainebyona",
+            "address": "kibuli",
+            "Id": "CL-12C08740",
+            "contact": "0786123487",
+            "pin": "4545",
+            "gender": "male",
+            "account_number": "ACC-82E3A423",
+            "account_type": "fixed",
+            "branch": "Main Branch",
+            "account_holder": "owen ainebyona",
+            "date": "4/4/2006",
+            "balance": 62000.0,
+            "status": "in progress"
+        },
+        {
+            "first_name": "hanie",
+            "last_name": "Rizik",
+            "address": "kawwanda",
+            "Id": "CL-E820A938",
+            "contact": "0756937456",
+            "pin": "7878",
+            "gender": "female",
+            "account_number": "ACC-3F2ACA7C",
+            "account_type": "current",
+            "branch": "Main Branch",
+            "account_holder": "hanie Rizik",
+            "date": "5/6/2026",
+            "balance": 0,
+            "status": "in progress"
+        },
+        {
+            "first_name": "nandi",
+            "last_name": "mami",
+            "address": "plot1",
+            "Id": "CL-42BEF6D4",
+            "contact": "0700000000",
+            "pin": "2233",
+            "gender": "female",
+            "account_number": "ACC-245AB6E6",
+            "account_type": "fixed",
+            "branch": "Main Branch",
+            "account_holder": "nandi mami",
+            "date": "2/2/2026",
+            "balance": 7000.0,
+            "status": "in progress"
+        },
+        {
+            "first_name": "NANA",
+            "last_name": "",
+            "address": "JJ",
+            "Id": "CL-733ED101",
+            "contact": "8888888888",
+            "pin": "9999",
+            "gender": "HH",
+            "account_number": "ACC-64219BB6",
+            "account_type": "II",
+            "branch": "Main Branch",
+            "account_holder": "NANA",
+            "date": "55",
+            "balance": 0,
+            "status": "in progress"
+        },
+        {
+            "first_name": "waligo",
+            "last_name": "henry",
+            "address": "ploy1",
+            "Id": "a001",
+            "contact": "0700000000",
+            "gender": "male",
+            "account_number": "07000000",
+            "account_type": "fixed",
+            "account_holder": "waligo henry",
+            "branch": "gaba",
+            "balance": 0,
+            "status": "in progress",
+            "date": "2/5/2026"
+        },
+        {
+            "first_name": "wagaba",
+            "last_name": "henry",
+            "address": "plot1",
+            "Id": "CL-84424CB8",
+            "contact": "07000000",
+            "gender": "male",
+            "account_number": "ACC-E7073854",
+            "account_type": "fixed",
+            "account_holder": "wagaba henry",
+            "branch": "kibuli",
+            "balance": 20000.0,
+            "status": "in progress",
+            "date": "2/6/2026"
+        }
+    ],
+    "branches": [
+        {
+            "branch_name": "kibili",
+            "branch_code": "BR-2113D208",
+            "address": "kawanda",
+            "bank_manager": "owen",
+            "contact": "567890"
+        },
+        {
+            "branch_name": "rr",
+            "branch_code": "BR-ED2DDC1F",
+            "address": "t",
+            "bank_manager": "fg",
+            "contact": "gg"
+        },
+        {
+            "branch_name": "gaba",
+            "branch_code": "BR-5BF25247",
+            "address": "plot1",
+            "bank_manager": "bony",
+            "contact": "0700000000"
+        },
+        {
+            "branch_name": "gaba",
+            "branch_code": "BR-9D5514CE",
+            "address": "plot1",
+            "bank_manager": "wamoni",
+            "contact": "07000000"
+        }
+    ]
+}

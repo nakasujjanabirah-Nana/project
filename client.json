@@ -1,0 +1,20 @@
+[
+    {
+        "first_name": "waligo",
+        "last_name": "henry",
+        "address": "ploy1",
+        "Id": "a001",
+        "contact": "0700000000",
+        "gender": "male",
+        "account_number": "2"
+    },
+    {
+        "first_name": "wagaba",
+        "last_name": "henry",
+        "address": "plot1",
+        "Id": "CL-84424CB8",
+        "contact": "07000000",
+        "gender": "male",
+        "account_number": "ACC-E7073854"
+    }
+]
