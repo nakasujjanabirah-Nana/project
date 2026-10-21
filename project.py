@@ -3,6 +3,13 @@ import re
 
 
 class Branch:
+    branch_counter = 0
+
+    @classmethod
+    def generate_branch_code(cls):
+        cls.branch_counter += 1
+        return f"BR-{cls.branch_counter:04d}"
+
     def __init__(self, branch_name, branch_code, address, branch_manager_name, contact):
         self.branch_name = branch_name
         self.branch_code = branch_code
@@ -15,6 +22,13 @@ class Branch:
 
 
 class Client:
+    client_counter = 0
+
+    @classmethod
+    def generate_client_id(cls):
+        cls.client_counter += 1
+        return f"CL-{cls.client_counter:04d}"
+
     def __init__(self, first_name, last_name, address, Id, contact, gender, account_number):
         self.first_name = first_name
         self.last_name = last_name
@@ -28,7 +42,14 @@ class Client:
         return f"Client: {self.first_name} {self.last_name}, ID: {self.Id}, Address: {self.address}, Contact: {self.contact}, Gender: {self.gender}"
 
 
-class Account(Client):
+class Account:
+    account_counter = 0
+
+    @classmethod
+    def generate_account_number(cls):
+        cls.account_counter += 1
+        return f"ACC-{cls.account_counter:04d}"
+
     def __init__(self, first_name, last_name, address, Id, contact, gender, account_number, account_type, account_holder, date):
         super().__init__(first_name, last_name, address, Id, contact, gender, account_number)
         self.account_number = account_number
@@ -57,8 +78,21 @@ class Account(Client):
 
 
 class Transaction:
-    def __init__(self,t_id,transaction_type,date,account_number):
-        self.t_id = t_id
+    transaction_counter = 0
+    receipt_counter = 0
+
+    @classmethod
+    def generate_id(cls):
+        cls.transaction_counter += 1
+        return f"TR-{cls.transaction_counter:04d}"
+
+    @classmethod
+    def generate_receipt_id(cls):
+        cls.receipt_counter += 1
+        return f"RC-{cls.receipt_counter:04d}"
+
+    def __init__(self,t_id=None,transaction_type="Transaction",date=None,account_number=None):
+        self.t_id = t_id if t_id is not None else Transaction.generate_id()
         self.transaction_type = transaction_type
         self.__amount = 0
         self.date = date
@@ -77,12 +111,11 @@ class Transaction:
         
    
 
-class Transfer:
-    def __init__(self,transfer_id,date,reciever_account,):
-        
-        self.transfer_id = transfer_id
+class Transfer(Transaction):
+    def __init__(self,transfer_id=None,date=None,reciever_account=None):
+        super().__init__(transfer_id, "Transfer", date)
+        self.transfer_id = self.t_id
         self.__amount = 0
-        self.date = date
         self.__status = "pending"
         self.reciever_account = reciever_account
 
@@ -96,9 +129,9 @@ class Transfer:
         return self.__status
     
 
-class Deposit:
-    def __init__(self,t_id,account_no,):
-        self.t_id = t_id
+class Deposit(Transaction):
+    def __init__(self,t_id=None,account_no=None):
+        super().__init__(t_id, "Deposit", account_number=account_no)
         self.__amount = 0
         self.account_no = account_no
     @property
@@ -113,9 +146,9 @@ class Deposit:
 
     
 
-class Withdrawal:
-    def __init__(self,t_id,account_no):
-        self.t_id = t_id
+class Withdrawal(Transaction):
+    def __init__(self,t_id=None,account_no=None):
+        super().__init__(t_id, "Withdrawal", account_number=account_no)
         self.account_no = account_no
         self.__amount = 0
 

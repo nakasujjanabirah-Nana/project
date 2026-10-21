@@ -16,5 +16,14 @@
         "contact": "07000000",
         "gender": "male",
         "account_number": "ACC-E7073854"
+    },
+    {
+        "first_name": "tiina",
+        "last_name": "kk",
+        "address": "kawanda",
+        "Id": "CL-0001",
+        "contact": "090876543",
+        "gender": "m",
+        "account_number": "ACC-0001"
     }
 ]

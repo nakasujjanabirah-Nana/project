@@ -94,6 +94,15 @@
             "balance": 20000.0,
             "status": "in progress",
             "date": "2/6/2026"
+        },
+        {
+            "account_number": "ACC-0001",
+            "account_type": "fixed",
+            "account_holder": "kk",
+            "branch": "kawanda",
+            "balance": 0,
+            "status": "in progress",
+            "date": "4/4/2026"
         }
     ],
     "branches": [
@@ -124,6 +133,13 @@
             "address": "plot1",
             "bank_manager": "wamoni",
             "contact": "07000000"
+        },
+        {
+            "branch_name": "kibuli",
+            "branch_code": "BR-0001",
+            "address": "kampala",
+            "bank_manager": "owen",
+            "contact": "34567890"
         }
     ]
 }

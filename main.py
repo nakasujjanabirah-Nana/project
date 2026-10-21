@@ -1,6 +1,5 @@
 
 import json
-import uuid
 
 from datetime import datetime
 
@@ -9,7 +8,7 @@ from project import Branch,Client,Account,Transaction,Transfer,Withdrawal,Deposi
 branch = []
 while True:
     branch_name = input("Enter branch name: ")
-    branch_code = "BR-" + uuid.uuid4().hex[:8].upper()
+    branch_code = Branch.generate_branch_code()
     print("Generated branch code:", branch_code)
     address = input("Enter branch address: ")
     bank_manager = input("Enter bank manager name: ")
@@ -43,11 +42,11 @@ while True:
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
     address = input("Enter address: ")
-    Id = "CL-" + uuid.uuid4().hex[:8].upper()
+    Id = Client.generate_client_id()
     print("Generated client ID:", Id)
     contact = input("Enter contact: ")
     gender = input("Enter gender: ")
-    account_number = "ACC-" + uuid.uuid4().hex[:8].upper()
+    account_number = Account.generate_account_number()
     print("Generated account number:", account_number)
 
     c1 = Client(first_name, last_name, address, Id, contact, gender, account_number)
@@ -179,15 +178,14 @@ while True:
         if transaction_type == "transfer":
             destination_account["balance"] = float(destination_account.get("balance", 0)) + amount
 
-    transaction_id = str(uuid.uuid4())
-    receipt_id = str(uuid.uuid4())
     date = datetime.now().isoformat(timespec="seconds")
     transaction = Transaction(
-        transaction_id,
-        transaction_type,
-        date,
-        account_number
+        transaction_type=transaction_type,
+        date=date,
+        account_number=account_number
     )
+    transaction_id = transaction.t_id
+    receipt_id = Transaction.generate_receipt_id()
 
     transaction_data = {
         "transaction_id": transaction_id,
