@@ -1,10 +1,10 @@
 
 class Transaction:
-    def __init__(self,t_id,date,account_no,amount):
+    def __init__(self,t_id,date,account_no):
         self.t_id = t_id
         self.date = date
         self.account_no = account_no
-        self.amount = 0
+        self.__amount = 0
     def transaction_action(self,amount):
         print("Transaction successful")    
 

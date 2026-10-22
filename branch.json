@@ -140,6 +140,27 @@
             "address": "kampala",
             "bank_manager": "owen",
             "contact": "34567890"
+        },
+        {
+            "branch_name": "QWERTY",
+            "branch_code": "BR-0001",
+            "address": "2345678",
+            "bank_manager": "WERTYUI",
+            "contact": "3456789"
+        },
+        {
+            "branch_name": "wertyui",
+            "branch_code": "BR-0001",
+            "address": "12345",
+            "bank_manager": "wertyu",
+            "contact": "2345678"
+        },
+        {
+            "branch_name": "uu",
+            "branch_code": "BR-0001",
+            "address": "yyy",
+            "bank_manager": "nn",
+            "contact": "000"
         }
     ]
 }

@@ -25,5 +25,23 @@
         "contact": "090876543",
         "gender": "m",
         "account_number": "ACC-0001"
+    },
+    {
+        "first_name": "QWERTY",
+        "last_name": "SDFFGG",
+        "address": "WERTY",
+        "Id": "CL-0001",
+        "contact": "WER",
+        "gender": "M",
+        "account_number": "ACC-0001"
+    },
+    {
+        "first_name": "SDFDFTGY",
+        "last_name": "RTYUIOP[",
+        "address": "EDRTJYUKIO",
+        "Id": "CL-0002",
+        "contact": "SDFHGJHJ",
+        "gender": "M",
+        "account_number": "ACC-0002"
     }
 ]
