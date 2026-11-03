@@ -1,6 +1,3 @@
-
-
-
 class Branch:
     branch_counter = 0
 
@@ -97,8 +94,10 @@ class Transaction:
         self.date = date
         self.account_number = account_number
         self.__status = "Pending"
-
-    
+#override method  
+    def update_balance(self,balance):
+        print("transaction actions in proccess")
+      
 
     def __str__(self):
         return f"Transaction ID: {self.transaction_id}, Transaction Type: {self.transaction_type}, Amount: {self.__amount}, Date: {self.date}, Account: {self.account},staus:{self.__status}"
@@ -111,12 +110,18 @@ class Transaction:
    
 
 class Transfer(Transaction):
+    transfer_id=0
+    @ classmethod
+    def generate_transfer_id(cls):
+        cls.transfer_id+=1
+        return f"TC-{cls.transfer_id:04d}"
     def __init__(self,transfer_id=None,date=None,reciever_account=None):
         super().__init__(transfer_id, "Transfer", date)
         self.transfer_id = self.t_id
         self.__amount = 0
         self.__status = "pending"
         self.reciever_account = reciever_account
+        
 
     def __str__(self):
         return f"Transfer ID: {self.transfer_id}, Amount: {self.amount}, Date: {self.date}, To Account: {self.reciever_account}"    
@@ -126,31 +131,76 @@ class Transfer(Transaction):
             self.__amount +=self.reciever_account
             
         return self.__status
+#override method    
+    def update_balance(self,account_number, receiver_account, amount):
+        if amount <= 0:
+            self.__status = "Failed: invalid amount"
+            return False      
+
+        if self.account_number.balance < amount:
+            self.__status = "Failed: insufficient funds"
+            return False
     
+        self.account_number.update_balance(self.account_number.balance - amount)
+        receiver_account.update_balance(receiver_account.balance + amount)
+        self.__amount = amount
+        self.reciever_account = receiver_account.account_number
+        self.__status = "completed"
+        return True
+        
+        
 
 class Deposit(Transaction):
+    deposit_id=0
+    @classmethod
+    def generate_deposit_id(cls):
+        cls.deposit_id+=1
+        return f"D.ID-{cls.deposit_id:04d}"
+    
     def __init__(self,t_id=None,account_no=None):
         super().__init__(t_id, "Deposit", account_number=account_no)
         self.__amount = 0
         self.account_no = account_no
+        self.__status = "pending"
     @property
     def get_amount(self,amount):
         if amount > 0:
             self.__amount +=amount
         return "successfull"
-
+    def set_status(self):
+        return self.__status
     
     def __str__(self):
         return f"Deposit ID: {self.t_id}, Amount: {self.amount}, Account: {self.account_no}"
+#override method    
+    def update_balance(self, account_number, amount):
+        if amount <= 0:
+            self.__status = "Failed: invalid amount"
+            return False
 
+        account_number.update_balance(account_number.balance + amount)
+        self.__amount = amount
+        self.account_no = account_number.account_number
+        self.__status = "completed"
+        return True
+
+    def update_balance(self, account_number, amount):
+        return self.update_balance(account_number, amount)
+
+    
     
 
 class Withdrawal(Transaction):
+    withdraw_id=0
+    @ classmethod
+    def generate_withdraw_id(cls):
+        cls.withdraw_id+=1
+        return f"withdraw_id-{cls.withdraw_id:04d}"
     def __init__(self,t_id=None,account_no=None):
         super().__init__(t_id, "Withdrawal", account_number=account_no)
         self.account_no = account_no
         self.__amount = 0
-
+        self.__status = "pending"
     def __str__(self):
         return f"Withdrawal ID: {self.t_id}, Amount: {self.amount}, Account: {self.account}"
     @property
@@ -160,6 +210,26 @@ class Withdrawal(Transaction):
     def get_amount(self,amount):
         
         self.__amount -=amount
+    def set_status(self):
+        return self.__status      
+#override method    
+    def update_balance(self, account, amount):
+        if amount <= 0:
+            self.__status = "Failed: invalid amount"
+            return False
+
+        if account.balance < amount:
+            self.__status = "Failed: insufficient funds"
+            return False
+
+        account.update_balance(account.balance - amount)
+        self.__amount = amount
+        self.account_no = account.account_number
+        self.__status = "completed"
+        return True
+
+    def update_balance(self, account, amount):
+        return self.update_balance(account, amount)
 
 
     

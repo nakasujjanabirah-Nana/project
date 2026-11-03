@@ -161,6 +161,13 @@
             "address": "yyy",
             "bank_manager": "nn",
             "contact": "000"
+        },
+        {
+            "branch_name": "rtyui",
+            "branch_code": "BR-0001",
+            "address": "5678",
+            "bank_manager": "876590",
+            "contact": "67890-"
         }
     ]
 }
