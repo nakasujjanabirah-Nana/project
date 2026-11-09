@@ -12,6 +12,11 @@ class Branch:
         self.address = address
         self.branch_manager_name = branch_manager_name
         self.contact = contact
+        self.clients = []
+
+    def add_client(self, client):
+        if client not in self.clients:
+            self.clients.append(client)
 
     def __str__(self):
         return f"Branch Name: {self.branch_name}, Branch Code: {self.branch_code}, Address: {self.address}, Bank Manager: {self.branch_manager_name}, Contact: {self.contact}"
@@ -33,6 +38,13 @@ class Client:
         self.contact = contact
         self.gender = gender
         self.account_number = account_number
+        self.accounts = []
+
+    def add_account(self, account):
+        if account.client is not self:
+            raise ValueError("This account belongs to another client.")
+        if account not in self.accounts:
+            self.accounts.append(account)
 
     def __str__(self):
         return f"Client: {self.first_name} {self.last_name}, ID: {self.Id}, Address: {self.address}, Contact: {self.contact}, Gender: {self.gender}"
@@ -46,17 +58,23 @@ class Account:
         cls.account_counter += 1
         return f"ACC-{cls.account_counter:04d}"
 
-    def __init__(self, first_name, last_name, address, Id, contact, gender, account_number, account_type, account_holder, date):
-        super().__init__(first_name, last_name, address, Id, contact, gender, account_number)
+    def __init__(self, client, account_number, account_type, account_holder, date):
+        self.client = client
         self.account_number = account_number
         self.account_type = account_type
         self.account_holder = account_holder
         self.__balance = 0
         self.__status = "in progress"
         self.date = date
+        self.transactions = []
+
+    def add_transaction(self, transaction):
+        if transaction.account_number != self.account_number:
+            raise ValueError("This transaction belongs to another account.")
+        self.transactions.append(transaction)
 
     def __str__(self):
-        return f"Client: {self.first_name} {self.last_name}, Account Number: {self.account_number}, Account Type: {self.account_type}, Balance: {self.__balance}, status: {self.__status}"
+        return f"Client: {self.client.first_name} {self.client.last_name}, Account Number: {self.account_number}, Account Type: {self.account_type}, Balance: {self.__balance}, status: {self.__status}"
     @property
     def balance(self):
         return self.__balance

@@ -43,5 +43,14 @@
         "contact": "SDFHGJHJ",
         "gender": "M",
         "account_number": "ACC-0002"
+    },
+    {
+        "first_name": "uu",
+        "last_name": "hh",
+        "address": "ss",
+        "Id": "CL-0001",
+        "contact": "00",
+        "gender": "gg",
+        "account_number": "ACC-0001"
     }
 ]

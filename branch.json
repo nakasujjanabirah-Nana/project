@@ -168,6 +168,13 @@
             "address": "5678",
             "bank_manager": "876590",
             "contact": "67890-"
+        },
+        {
+            "branch_name": "nn",
+            "branch_code": "BR-0001",
+            "address": "uu",
+            "bank_manager": "uu",
+            "contact": "99"
         }
     ]
 }
