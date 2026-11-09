@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transactions</title>
+    <script src="/static/app.js" defer></script>
 </head>
 <body>
     <nav><a href="main.html">main</a></nav>
@@ -36,7 +37,8 @@
             <button type="submit">Submit transaction</button>
             <p data-form-message role="status" aria-live="polite"></p>
         </form>
-       
+        <h2>Saved transactions</h2>
+        <div data-records data-endpoint="/api/transactions"></div>
     </section>
   
 </body>

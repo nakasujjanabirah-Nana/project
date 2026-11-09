@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACCOUNTS</title>
+    <meta name="theme-color" content="#f3f6fb">
+    <title>Accounts | Mobile Banking</title>
+    <script src="/static/app.js" defer></script>
 </head>
 <body>
     <nav><a href="main.html">main</a></nav>
     <h1>ACCOUNTS</h1>
     <section>
         <h2>Add account</h2>
+        <p>To create an account, first <a href="client.html">add a client</a> and <a href="branch.html">add a branch</a>.</p>
         <form data-endpoint="/api/accounts">
             <label>Client
                 <select name="client_id" data-options="/api/clients" data-value-field="Id"
@@ -32,9 +35,10 @@
             </label><br> <br>
             <label>Opening date <input name="date" type="date"></label><br> <br>
             <button type="submit">Save account</button>
-            
+            <p data-form-message role="status" aria-live="polite"></p>
         </form>
-       
+        <h2>Saved accounts</h2>
+        <div data-records data-endpoint="/api/accounts"></div>
     </section>
   
 </body>

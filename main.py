@@ -60,7 +60,6 @@ while True:
             branch_data = json.load(file)
     except FileNotFoundError:
         branch_data = {}
-    branch_data.setdefault("branches", []).append(new_branch)
     with open("branch.json", "w") as file:
         json.dump(branch_data, file, indent=4)
     if input("Do you want to add more branches? (y/n): ").lower() == "y":
@@ -150,7 +149,6 @@ while True:
             branch_data = json.load(file)
     except FileNotFoundError:
         branch_data = {}
-    branch_data["accounts"] = accounts
     with open("branch.json", "w") as file:
         json.dump(branch_data, file, indent=4)
     if input("Do you want to add more accounts? (y/n): ").lower() == "y":
@@ -257,7 +255,6 @@ while True:
         transaction_data["receiver_account"] = receiver_account
 
     save_accounts(accounts)
-    branch_data["accounts"] = accounts
     with open("branch.json", "w") as file:
         json.dump(branch_data, file, indent=4)
 

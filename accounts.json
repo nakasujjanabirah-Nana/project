@@ -1,1 +1,23 @@
-[{}]
+[
+    {},
+    {
+        "account_number": "ACC-0002",
+        "client_id": "CL-0001",
+        "account_type": "eytrgef",
+        "account_holder": "trfd",
+        "branch": "tr",
+        "balance": 0,
+        "status": "in progress",
+        "date": "ytr"
+    },
+    {
+        "account_number": "ACC-0002",
+        "client_id": "CL-0001",
+        "account_type": "tyrfed",
+        "account_holder": "jhgfd",
+        "branch": "jhgvc",
+        "balance": 30000.0,
+        "status": "in progress",
+        "date": "7898"
+    }
+]

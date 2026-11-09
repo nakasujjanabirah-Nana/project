@@ -5,6 +5,7 @@
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1">
               <title>BANK BRANCHES</title>
+              <script src="/static/app.js" defer></script>
             </head>
             <body>
               <nav aria-label="Main navigation">
@@ -21,8 +22,10 @@
                   <label>Bank manager <input name="bank_manager" required></label>  <br> <br>
                   <label>Contact <input name="contact" type="tel" required></label><br> <br>
                   <button type="submit">Save branch</button>
-                
+                  <p data-form-message role="status" aria-live="polite"></p>
                 </form>
-                
+                <h2>Saved branches</h2>
+                <div data-records data-endpoint="/api/branches"></div>
+              </section>
             </body>
             </html>

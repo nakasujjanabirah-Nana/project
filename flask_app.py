@@ -27,12 +27,12 @@ def write_json(filename, data):
 def get_records(filename, key):
     data = read_json(filename, [])
     if isinstance(data, list):
-        return data
-    if isinstance(data, dict):
+        records = data
+    elif isinstance(data, dict) and isinstance(data.get(key, []), list):
         records = data.get(key, [])
-        if isinstance(records, list):
-            return records
-    raise ValueError(f"{filename} must contain a list of {key}.")
+    else:
+        raise ValueError(f"{filename} must contain a list of {key}.")
+    return [record for record in records if record != {}]
 
 
 def get_branches():
@@ -45,7 +45,7 @@ def get_accounts():
         return accounts
     branch_data = read_json("branch.json", {})
     if isinstance(branch_data, dict) and isinstance(branch_data.get("accounts"), list):
-        return branch_data["accounts"]
+        return [account for account in branch_data["accounts"] if account != {}]
     return accounts
 
 
