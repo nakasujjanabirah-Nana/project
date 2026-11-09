@@ -1,0 +1,29 @@
+
+        <!doctype html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>BANK BRANCHES</title>
+        </head>
+        <body>
+          <nav><a href="/">Home</a></nav>
+          <h1>BANK BRANCHES</h1>
+          <section>
+            <h2>Add branch</h2>
+            <form data-endpoint="/api/branches">
+              <label>Branch name <input name="branch_name" required></label><br>
+              <label>Address <input name="address" required></label><br>
+              <label>Bank manager <input name="bank_manager" required></label><br>
+              <label>Contact <input name="contact" type="tel" required></label><br>
+              <button type="submit">Save branch</button>
+              <p data-form-message role="status" aria-live="polite"></p>
+            </form>
+          </section>
+          <section>
+            <h2>Saved branches</h2>
+            <div data-records data-endpoint="/api/branches"></div>
+          </section>
+          <script src="/static/app.js" defer></script>
+        </body>
+        </html>

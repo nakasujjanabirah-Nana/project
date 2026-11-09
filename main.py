@@ -38,6 +38,8 @@ while True:
         break
 
 client = []
+current_client = None
+
 while True:
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
@@ -50,6 +52,7 @@ while True:
     print("Generated account number:", account_number)
 
     c1 = Client(first_name, last_name, address, Id, contact, gender, account_number)
+    current_client = c1
 
     new_client = {
         "first_name": first_name,
@@ -62,12 +65,18 @@ while True:
     }
     try:
         with open("client.json", "r") as file:
-            client = json.load(file)
+            stored_client_data = json.load(file)
+        if isinstance(stored_client_data, dict):
+            client = stored_client_data.get("clients", [])
+        elif isinstance(stored_client_data, list):
+            client = stored_client_data
+        else:
+            client = []
     except FileNotFoundError:
         client = []
     client.append(new_client)
     with open("client.json", "w") as file:
-        json.dump(client, file, indent=4)
+        json.dump({"clients": client}, file, indent=4)
     if input("Do you want to add more clients? (y/n): ").lower() == "y":
         continue
     else:
@@ -76,13 +85,19 @@ while True:
 
 account = []
 while True:
-    print("Creating account:", account_number)
+    if current_client is None:
+        print("No client is available. Add a client before creating an account.")
+        break
+
+    print("Creating account for client:", current_client.Id)
+    account_number = Account.generate_account_number()
+    print("Generated account number:", account_number)
     account_type = input("Enter account type: ")
     account_holder = input("Enter account holder: ")
     date = input("Enter date: ")
     account_branch = input("Enter branch name: ")
 
-    a1 = Account(first_name, last_name, address, Id, contact, gender, account_number, account_type, account_holder, date)
+    a1 = Account(current_client, account_number, account_type, account_holder, date)
 
     new_account ={
     

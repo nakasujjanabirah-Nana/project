@@ -1,3 +1,11 @@
-[{
-    
-}]
+[
+    {},
+    {
+        "transaction_id": "TR-0001",
+        "receipt_id": "RC-0001",
+        "transaction_type": "deposit",
+        "date": "2026-11-09T18:18:11",
+        "account_number": "ACC-0002",
+        "amount": 100.0
+    }
+]

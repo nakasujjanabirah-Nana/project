@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCOUNTS</title>
+</head>
+<body>
+    <nav><a href="/">Home</a></nav>
+    <h1>ACCOUNTS</h1>
+    <section>
+        <h2>Add account</h2>
+        <form data-endpoint="/api/accounts">
+            <label>Client
+                <select name="client_id" data-options="/api/clients" data-value-field="Id"
+                    data-label-fields="first_name,last_name,Id" required>
+                    <option value="">Loading clients...</option>
+                </select>
+            </label><br>
+            <label>Account type
+                <select name="account_type" required>
+                    <option value="">Select account type</option>
+                    <option value="savings">Savings</option>
+                    <option value="checking">Checking</option>
+                </select>
+            </label><br>
+            <label>Branch
+                <select name="branch" data-options="/api/branches" data-value-field="branch_name"
+                    data-label-fields="branch_name" required>
+                    <option value="">Loading branches...</option>
+                </select>
+            </label><br>
+            <label>Opening date <input name="date" type="date"></label><br>
+            <button type="submit">Save account</button>
+            <p data-form-message role="status" aria-live="polite"></p>
+        </form>
+    </section>
+    <section>
+        <h2>Saved accounts</h2>
+        <div data-records data-endpoint="/api/accounts"></div>
+    </section>
+    <script src="/static/app.js" defer></script>
+</body>
+</html>
