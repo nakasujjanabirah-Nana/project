@@ -6,15 +6,15 @@
     <title>CLIENT PAGE</title>
 </head>
 <body>
-    <nav><a href="/">Home</a></nav>
+    <nav><a href="main.html">main</a></nav>
     <h1>CLIENT PAGE</h1>
     <section>
         <h2>Add client</h2>
         <form data-endpoint="/api/clients">
-            <label>First name <input name="first_name" autocomplete="given-name" required></label><br>
-            <label>Last name <input name="last_name" autocomplete="family-name" required></label><br>
-            <label>Address <input name="address" autocomplete="street-address" required></label><br>
-            <label>Contact <input name="contact" type="tel" autocomplete="tel" required></label><br>
+            <label>First name <input name="first_name" autocomplete="given-name" required></label><br> <br>
+            <label>Last name <input name="last_name" autocomplete="family-name" required></label><br> <br>
+            <label>Address <input name="address" autocomplete="street-address" required></label><br> <br>
+            <label>Contact <input name="contact" type="tel" autocomplete="tel" required></label><br> <br>
             <label>Gender
                 <select name="gender" required>
                     <option value="">Select gender</option>
@@ -23,15 +23,11 @@
                     <option value="other">Other</option>
                     <option value="prefer not to say">Prefer not to say</option>
                 </select>
-            </label><br>
+            </label><br> <br>
             <button type="submit">Save client</button>
             <p data-form-message role="status" aria-live="polite"></p>
         </form>
     </section>
-    <section>
-        <h2>Saved clients</h2>
-        <div data-records data-endpoint="/api/clients"></div>
-    </section>
-    <script src="/static/app.js" defer></script>
+       
 </body>
 </html>

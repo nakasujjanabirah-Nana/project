@@ -6,7 +6,7 @@
     <title>ACCOUNTS</title>
 </head>
 <body>
-    <nav><a href="/">Home</a></nav>
+    <nav><a href="main.html">main</a></nav>
     <h1>ACCOUNTS</h1>
     <section>
         <h2>Add account</h2>
@@ -16,23 +16,23 @@
                     data-label-fields="first_name,last_name,Id" required>
                     <option value="">Loading clients...</option>
                 </select>
-            </label><br>
+            </label><br> <br>
             <label>Account type
                 <select name="account_type" required>
                     <option value="">Select account type</option>
                     <option value="savings">Savings</option>
                     <option value="checking">Checking</option>
                 </select>
-            </label><br>
+            </label><br> <br>
             <label>Branch
                 <select name="branch" data-options="/api/branches" data-value-field="branch_name"
                     data-label-fields="branch_name" required>
                     <option value="">Loading branches...</option>
                 </select>
-            </label><br>
-            <label>Opening date <input name="date" type="date"></label><br>
+            </label><br> <br>
+            <label>Opening date <input name="date" type="date"></label><br> <br>
             <button type="submit">Save account</button>
-            <p data-form-message role="status" aria-live="polite"></p>
+
         </form>
     
 </body>
