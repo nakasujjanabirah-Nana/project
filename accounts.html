@@ -32,8 +32,11 @@
             </label><br> <br>
             <label>Opening date <input name="date" type="date"></label><br> <br>
             <button type="submit">Save account</button>
-
+            <p data-form-message role="status" aria-live="polite"></p>
         </form>
-    
+        <h2>Saved accounts</h2>
+        <div data-records data-endpoint="/api/accounts"></div>
+    </section>
+  
 </body>
 </html>
