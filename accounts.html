@@ -14,7 +14,7 @@
             <label>Client
                 <select name="client_id" data-options="/api/clients" data-value-field="Id"
                     data-label-fields="first_name,last_name,Id" required>
-                    <option value="">Loading clients...</option>
+                    <option value="">Select client</option>
                 </select>
             </label><br> <br>
             <label>Account type
@@ -27,15 +27,14 @@
             <label>Branch
                 <select name="branch" data-options="/api/branches" data-value-field="branch_name"
                     data-label-fields="branch_name" required>
-                    <option value="">Loading branches...</option>
+                    <option value="">Select branch</option>
                 </select>
             </label><br> <br>
             <label>Opening date <input name="date" type="date"></label><br> <br>
             <button type="submit">Save account</button>
-            <p data-form-message role="status" aria-live="polite"></p>
+            
         </form>
-        <h2>Saved accounts</h2>
-        <div data-records data-endpoint="/api/accounts"></div>
+       
     </section>
   
 </body>
