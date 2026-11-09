@@ -1,52 +1,57 @@
 {
     "branches": [
         {
-            "branch_name": "NAMASUBA",
+            "branch_name": "nansana",
             "branch_code": "BR-0001",
-            "address": "KIKAJJO",
-            "bank_manager": "SAM",
+            "address": "seera",
+            "bank_manager": "babra",
             "contact": "0709080513"
         },
         {
-            "branch_name": "Branch One",
+            "branch_name": "cls",
             "branch_code": "BR-0001",
-            "address": "123 Main St",
-            "bank_manager": "Sam",
-            "contact": "555-1234"
+            "address": "",
+            "bank_manager": "",
+            "contact": ""
         },
         {
-            "branch_name": "Branch One",
+            "branch_name": "",
             "branch_code": "BR-0001",
-            "address": "123 Main St",
-            "bank_manager": "Sam",
-            "contact": "555-1234"
-        },
-        {
-            "branch_name": "Branch One",
-            "branch_code": "BR-0001",
-            "address": "123 Main St",
-            "bank_manager": "Sam",
-            "contact": "555-1234"
+            "address": "",
+            "bank_manager": "",
+            "contact": ""
         }
     ],
     "accounts": [
         {
             "account_number": "ACC-0002",
-            "account_type": "Savings",
-            "account_holder": "John Doe",
-            "branch": "Branch One",
-            "balance": 0,
+            "client_id": "CL-0001",
+            "account_type": "savings",
+            "account_holder": "eryc wyne",
+            "branch": "nansana",
+            "balance": 7500.0,
             "status": "in progress",
-            "date": "2024-01-01"
+            "date": "2/09/2020"
         },
         {
             "account_number": "ACC-0002",
-            "account_type": "Savings",
-            "account_holder": "John Doe",
-            "branch": "Branch One",
-            "balance": 100.0,
+            "client_id": "CL-0001",
+            "account_type": "",
+            "account_holder": "",
+            "branch": "",
+            "balance": 0,
             "status": "in progress",
-            "date": "2024-01-01"
+            "date": ""
+        },
+        {
+            "account_number": "ACC-0002",
+            "client_id": "CL-0001",
+            "account_type": "",
+            "account_holder": "",
+            "branch": "",
+            "balance": 0,
+            "status": "in progress",
+            "date": ""
         }
     ]
 }

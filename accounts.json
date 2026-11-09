@@ -1,0 +1,32 @@
+[
+    {
+        "account_number": "ACC-0002",
+        "client_id": "CL-0001",
+        "account_type": "savings",
+        "account_holder": "eryc wyne",
+        "branch": "nansana",
+        "balance": 7500.0,
+        "status": "in progress",
+        "date": "2/09/2020"
+    },
+    {
+        "account_number": "ACC-0002",
+        "client_id": "CL-0001",
+        "account_type": "",
+        "account_holder": "",
+        "branch": "",
+        "balance": 0,
+        "status": "in progress",
+        "date": ""
+    },
+    {
+        "account_number": "ACC-0002",
+        "client_id": "CL-0001",
+        "account_type": "",
+        "account_holder": "",
+        "branch": "",
+        "balance": 0,
+        "status": "in progress",
+        "date": ""
+    }
+]

@@ -5,6 +5,37 @@ from datetime import datetime
 
 from project import Branch,Client,Account,Transaction,Transfer,Withdrawal,Deposit,Transfer
 
+
+def load_accounts():
+    try:
+        with open("accounts.json", "r") as file:
+            account_data = json.load(file)
+    except FileNotFoundError:
+        try:
+            with open("branch.json", "r") as file:
+                branch_data = json.load(file)
+        except FileNotFoundError:
+            return []
+
+        accounts = branch_data.get("accounts", [])
+        if not isinstance(accounts, list):
+            raise ValueError("The accounts data in branch.json must be a list.")
+        with open("accounts.json", "w") as file:
+            json.dump(accounts, file, indent=4)
+        return accounts
+
+    if isinstance(account_data, dict):
+        account_data = account_data.get("accounts", [])
+    if not isinstance(account_data, list):
+        raise ValueError("accounts.json must contain a list of accounts.")
+    return account_data
+
+
+def save_accounts(accounts):
+    with open("accounts.json", "w") as file:
+        json.dump(accounts, file, indent=4)
+
+
 branch = []
 while True:
     branch_name = input("Enter branch name: ")
@@ -83,7 +114,6 @@ while True:
         break
 
 
-account = []
 while True:
     if current_client is None:
         print("No client is available. Add a client before creating an account.")
@@ -102,6 +132,7 @@ while True:
     new_account ={
     
             'account_number': account_number,
+            'client_id': current_client.Id,
             'account_type': account_type,
             'account_holder': account_holder,
             'branch': account_branch,
@@ -110,12 +141,16 @@ while True:
             'date': date
 
         }
+    accounts = load_accounts()
+    accounts.append(new_account)
+    save_accounts(accounts)
+
     try:
         with open("branch.json", "r") as file:
             branch_data = json.load(file)
     except FileNotFoundError:
         branch_data = {}
-    branch_data.setdefault("accounts", []).append(new_account)
+    branch_data["accounts"] = accounts
     with open("branch.json", "w") as file:
         json.dump(branch_data, file, indent=4)
     if input("Do you want to add more accounts? (y/n): ").lower() == "y":
@@ -129,8 +164,12 @@ while True:
     print("1. Deposit")
     print("2. Withdrawal")
     print("3. Transfer")
+    print("q. Quit")
 
-    option = input("Enter your choice (1-3): ")
+    option = input("Enter your choice (1-3 or q): ").strip().lower()
+    if option == "q":
+        print("Goodbye.")
+        break
     if option == "1":
         transaction_type = "deposit"
     elif option == "2":
@@ -138,7 +177,7 @@ while True:
     elif option == "3":
         transaction_type = "transfer"
     else:
-        print("Invalid choice. Please choose 1, 2, or 3.")
+        print("Invalid choice. Please choose 1, 2, 3, or q.")
         continue
 
     account_number = input("Enter account number: ")
@@ -162,10 +201,13 @@ while True:
         with open("branch.json", "r") as file:
             branch_data = json.load(file)
     except FileNotFoundError:
+        branch_data = {}
+
+    accounts = load_accounts()
+    if not accounts:
         print("No account data was found.")
         continue
 
-    accounts = branch_data.get("accounts", [])
     source_account = None
     destination_account = None
     for saved_account in accounts:
@@ -214,6 +256,8 @@ while True:
     if transaction_type == "transfer":
         transaction_data["receiver_account"] = receiver_account
 
+    save_accounts(accounts)
+    branch_data["accounts"] = accounts
     with open("branch.json", "w") as file:
         json.dump(branch_data, file, indent=4)
 
