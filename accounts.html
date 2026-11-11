@@ -11,8 +11,13 @@
     <nav><a href="main.html">main</a></nav>
     <h1>ACCOUNTS</h1>
     <section>
+        <h2>Client Login</h2>
+        <form method="POST" action="/accounts_login">
+            <label>Client ID: <input type="text" name="client_id" required></label><br><br>
+            <label>Account Number: <input type="text" name="account_number" required></label><br><br>
+            <button type="submit">Login</button>
+        </form>
         <h2>Add account</h2>
-        <p>To create an account, first <a href="client.html">add a client</a> and <a href="branch.html">add a branch</a>.</p>
         <form data-endpoint="/api/accounts">
             <label>Client
                 <select name="client_id" data-options="/api/clients" data-value-field="Id"
@@ -37,7 +42,6 @@
             <button type="submit">Save account</button>
             <p data-form-message role="status" aria-live="polite"></p>
         </form>
-        <h2>Saved accounts</h2>
         <div data-records data-endpoint="/api/accounts"></div>
     </section>
   
