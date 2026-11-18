@@ -16,11 +16,11 @@
     <h1>ACCOUNTS</h1>
     <section>
         <h2>Add account</h2>
-        {% if not clients %}
+    
             <p>Add a client before creating an account.</p>
-        {% elif not branches %}
+
             <p>Add a branch before creating an account.</p>
-        {% endif %}
+    
         <form method="post">
             <label>Client
                 <select name="client_id" required>

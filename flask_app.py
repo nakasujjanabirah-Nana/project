@@ -8,6 +8,7 @@ from flask import Flask, abort, redirect, render_template, request, url_for
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "flask_app.json"
 task_manager = Flask(__name__, template_folder=str(BASE_DIR / "templates"))
+app = task_manager
 EMPTY_DATA = {
     "branches": [],
     "clients": [],
@@ -41,11 +42,13 @@ def save_data(data):
         json.dump(data, file, indent=2)
 
 @task_manager.route("/")
+@task_manager.route("/main.html")
 def home():
     return render_template("main.html")
 
 
 @task_manager.route("/branch", methods=["GET", "POST"])
+@task_manager.route("/branch.html", methods=["GET", "POST"])
 def branch():
     data = load_data()
     if request.method == "POST":
@@ -61,6 +64,7 @@ def branch():
 
 
 @task_manager.route("/client", methods=["GET", "POST"])
+@task_manager.route("/client.html", methods=["GET", "POST"])
 def client():
     data = load_data()
     if request.method == "POST":
@@ -78,6 +82,7 @@ def client():
 
 
 @task_manager.route("/accounts", methods=["GET", "POST"])
+@task_manager.route("/accounts.html", methods=["GET", "POST"])
 def accounts():
     data = load_data()
     if request.method == "POST":
@@ -116,6 +121,8 @@ def accounts():
 
 
 @task_manager.route("/transactions", methods=["GET", "POST"])
+@task_manager.route("/transaction.html", methods=["GET", "POST"])
+@task_manager.route("/transactions.html", methods=["GET", "POST"])
 def transactions():
     data = load_data()
     if request.method == "POST":
