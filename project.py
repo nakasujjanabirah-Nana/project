@@ -36,9 +36,10 @@ class Client:
         self.gender = gender
         self.account_number = account_number
         self.branches= []
-
+        
+#composition relation
     def add_branch(self, branch):
-        if branch.lient is not self:
+        if branch.client is not self:
             raise ValueError("This account does not belong to this client.")
         if branch not in self.branches:
             self.branches.append(branch)
@@ -104,14 +105,14 @@ class Transaction:
         self.date = date
         self.__status = "Pending"
         self.account = account
-        self.account_number = account.account_number if account is not None else account_number
+        self.accounts = []
 
+#composition relationship   
     def add_account(self, account):
-        if self.account_number is not None and account.account_number != self.account_number:
-            raise ValueError("This transaction belongs to another account.")
-        self.account = account
-        self.account_number = account.account_number
-        
+        if account.transaction is not self:
+            raise ValueError("incorrect account entered")
+        if account not in self.accounts:
+            self.accounts.append(account)
 #override method  
     def update_balance(self,balance):
         print("transaction actions in proccess")

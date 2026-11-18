@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transactions</title>
-    <script src="/static/app.js" defer></script>
 </head>
 <body>
     <nav><a href="main.html">main</a></nav>
     <h1>Transactions</h1>
     <section>
         <h2>Make a transaction</h2>
-        <form data-endpoint="/api/transactions">
+        <form method="post">
             <label>Type
                 <select name="transaction_type" required>
                     <option value="">Select transaction type</option>
@@ -21,24 +20,26 @@
                 </select>
             </label><br> <br>
             <label>Account
-                <select name="account_number" data-options="/api/accounts"
-                    data-value-field="account_number" data-label-fields="account_number,account_holder"
-                    required>
+                <select name="account_number" required>
                     <option value="">Select account</option>
+                    {% for account in accounts %}
+                        <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.account_holder }}</option>
+                    {% endfor %}
                 </select>
             </label><br> <br>
-            <label data-transfer-field hidden>Receiving account
-                <select name="receiver_account" data-options="/api/accounts"
-                    data-value-field="account_number" data-label-fields="account_number,account_holder">
+            <label>Receiving account (optional)
+                <select name="receiver_account">
                     <option value="">Select receiving account</option>
+                    {% for account in accounts %}
+                        <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.account_holder }}</option>
+                    {% endfor %}
                 </select>
             </label><br> <br>
             <label>Amount <input name="amount" type="number" min="0.01" step="0.01" required></label><br> <br>
             <button type="submit">Submit transaction</button>
-            <p data-form-message role="status" aria-live="polite"></p>
         </form>
         <h2>Saved transactions</h2>
-        <div data-records data-endpoint="/api/transactions"></div>
+        
     </section>
   
 </body>
