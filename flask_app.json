@@ -1,13 +1,108 @@
 {
   "branches": [
     {
-      "branch_name": "Hanz",
+      "branch_name": "kibuli branch",
       "address": "kibuli",
-      "bank_manager": "owen",
-      "contact": "456786778"
+      "bank_manager": "sam",
+      "contact": "8888"
+    },
+    {
+      "branch_name": "kabale branch",
+      "address": "kable",
+      "bank_manager": "kato",
+      "contact": "999"
     }
   ],
-  "clients": [],
-  "accounts": [],
-  "transactions": []
+  "clients": [
+    {
+      "Id": "CL-0001",
+      "first_name": "nabirah",
+      "last_name": "ahmed",
+      "address": "kibuli",
+      "contact": "7777",
+      "gender": "female"
+    },
+    {
+      "Id": "CL-0002",
+      "first_name": "ssenteza",
+      "last_name": "eric",
+      "address": "masindi",
+      "contact": "555",
+      "gender": "male"
+    },
+    {
+      "Id": "CL-0003",
+      "first_name": "owen",
+      "last_name": "ainebyona",
+      "address": "katwe",
+      "contact": "89584",
+      "gender": "male"
+    }
+  ],
+  "accounts": [
+    {
+      "account_number": "ACC-0001",
+      "client_id": "CL-0001",
+      "account_holder": "nabirah ahmed",
+      "account_type": "savings",
+      "branch": "kibuli branch",
+      "balance": 0.0,
+      "date": "2026-11-18"
+    },
+    {
+      "account_number": "ACC-0002",
+      "client_id": "CL-0002",
+      "account_holder": "ssenteza eric",
+      "account_type": "savings",
+      "branch": "kabale branch",
+      "balance": 25000.0,
+      "date": "2026-11-19"
+    },
+    {
+      "account_number": "ACC-0003",
+      "client_id": "CL-0003",
+      "account_holder": "owen ainebyona",
+      "account_type": "savings",
+      "branch": "kibuli branch",
+      "balance": 25000.0,
+      "date": "2026-02-02"
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": "TR-0001",
+      "receipt_id": "RC-0001",
+      "transaction_type": "deposit",
+      "date": "2026-11-18T13:35:44",
+      "account_number": "ACC-0001",
+      "amount": 50000.0
+    },
+    {
+      "transaction_id": "TR-0002",
+      "receipt_id": "RC-0002",
+      "transaction_type": "transfer",
+      "date": "2026-11-18T13:37:12",
+      "account_number": "ACC-0001",
+      "amount": 30000.0,
+      "receiver_account": "ACC-0002"
+    },
+    {
+      "transaction_id": "TR-0003",
+      "receipt_id": "RC-0003",
+      "transaction_type": "transfer",
+      "date": "2026-11-18T13:41:37",
+      "account_number": "ACC-0001",
+      "amount": 20000.0,
+      "receiver_account": "ACC-0002"
+    },
+    {
+      "transaction_id": "TR-0004",
+      "receipt_id": "RC-0004",
+      "transaction_type": "transfer",
+      "date": "2026-11-18T13:44:31",
+      "account_number": "ACC-0002",
+      "amount": 25000.0,
+      "receiver_account": "ACC-0003"
+    }
+  ]
 }

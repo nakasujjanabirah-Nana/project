@@ -35,12 +35,12 @@ class Client:
         self.contact = contact
         self.gender = gender
         self.account_number = account_number
-        self.branches= []
+        self.branches = [] #composition 
         
 #composition relation
     def add_branch(self, branch):
         if branch.client is not self:
-            raise ValueError("This account does not belong to this client.")
+            raise ValueError("Branch does not have this client")
         if branch not in self.branches:
             self.branches.append(branch)
 
@@ -105,7 +105,8 @@ class Transaction:
         self.date = date
         self.__status = "Pending"
         self.account = account
-        self.accounts = []
+        self.accounts = []  #composition 
+
 
 #composition relationship   
     def add_account(self, account):
@@ -134,6 +135,7 @@ class Transfer(Transaction):
     def generate_transfer_id(cls):
         cls.transfer_id+=1
         return f"TC-{cls.transfer_id:04d}"
+    
     def __init__(self,transfer_id=None,date=None,reciever_account=None,account=None):
         super().__init__(transfer_id, "Transfer", date, account=account)
         self.transfer_id = self.t_id

@@ -1,39 +1,18 @@
 
-import json
-
 from datetime import datetime
 
 from project import Branch,Client,Account,Transaction,Transfer,Withdrawal,Deposit,Transfer
+from flask_app import load_data, save_data
 
 
 def load_accounts():
-    try:
-        with open("accounts.json", "r") as file:
-            account_data = json.load(file)
-    except FileNotFoundError:
-        try:
-            with open("branch.json", "r") as file:
-                branch_data = json.load(file)
-        except FileNotFoundError:
-            return []
-
-        accounts = branch_data.get("accounts", [])
-        if not isinstance(accounts, list):
-            raise ValueError("The accounts data in branch.json must be a list.")
-        with open("accounts.json", "w") as file:
-            json.dump(accounts, file, indent=4)
-        return accounts
-
-    if isinstance(account_data, dict):
-        account_data = account_data.get("accounts", [])
-    if not isinstance(account_data, list):
-        raise ValueError("accounts.json must contain a list of accounts.")
-    return account_data
+    return load_data()["accounts"]
 
 
 def save_accounts(accounts):
-    with open("accounts.json", "w") as file:
-        json.dump(accounts, file, indent=4)
+    data = load_data()
+    data["accounts"] = accounts
+    save_data(data)
 
 
 branch = []
@@ -55,13 +34,9 @@ while True:
         "bank_manager": bank_manager,
         "contact": contact
     }
-    try:
-        with open("branch.json", "r") as file:
-            branch_data = json.load(file)
-    except FileNotFoundError:
-        branch_data = {}
-    with open("branch.json", "w") as file:
-        json.dump(branch_data, file, indent=4)
+    data = load_data()
+    data["branches"].append(new_branch)
+    save_data(data)
     if input("Do you want to add more branches? (y/n): ").lower() == "y":
         continue
     else:
@@ -93,20 +68,10 @@ while True:
         "gender": gender,
         "account_number": account_number,
     }
-    try:
-        with open("client.json", "r") as file:
-            stored_client_data = json.load(file)
-        if isinstance(stored_client_data, dict):
-            client = stored_client_data.get("clients", [])
-        elif isinstance(stored_client_data, list):
-            client = stored_client_data
-        else:
-            client = []
-    except FileNotFoundError:
-        client = []
+    data = load_data()
+    client = data["clients"]
     client.append(new_client)
-    with open("client.json", "w") as file:
-        json.dump({"clients": client}, file, indent=4)
+    save_data(data)
     if input("Do you want to add more clients? (y/n): ").lower() == "y":
         continue
     else:
@@ -144,13 +109,6 @@ while True:
     accounts.append(new_account)
     save_accounts(accounts)
 
-    try:
-        with open("branch.json", "r") as file:
-            branch_data = json.load(file)
-    except FileNotFoundError:
-        branch_data = {}
-    with open("branch.json", "w") as file:
-        json.dump(branch_data, file, indent=4)
     if input("Do you want to add more accounts? (y/n): ").lower() == "y":
         continue
     else:
@@ -194,12 +152,6 @@ while True:
         if receiver_account == account_number:
             print("You cannot transfer to the same account.")
             continue
-
-    try:
-        with open("branch.json", "r") as file:
-            branch_data = json.load(file)
-    except FileNotFoundError:
-        branch_data = {}
 
     accounts = load_accounts()
     if not accounts:
@@ -255,18 +207,10 @@ while True:
         transaction_data["receiver_account"] = receiver_account
 
     save_accounts(accounts)
-    with open("branch.json", "w") as file:
-        json.dump(branch_data, file, indent=4)
-
-    try:
-        with open("transactions.json", "r") as file:
-            transactions = json.load(file)
-    except FileNotFoundError:
-        transactions = []
-
+    data = load_data()
+    transactions = data["transactions"]
     transactions.append(transaction_data)
-    with open("transactions.json", "w") as file:
-        json.dump(transactions, file, indent=4)
+    save_data(data)
 
     print("\nTransaction saved.")
     print("Transaction ID:", transaction_id)

@@ -8,13 +8,13 @@
 <body>
     <h1>Mobile Banking Application</h1>
     <h2>WELCOME TO ONLINE BANKING SYSTEM</h2>
-    <p>Manage </p>
+    <p>Manage your banking activities with ease.</p>
     <nav aria-label="Main navigation">
         <ul>
-            <li><a href="branch.html">branches</a></li>
-            <li><a href="client.html">Clients</a></li>
-            <li><a href="accounts.html">Accounts</a></li>
-            <li><a href="transaction.html">Transactions</a></li>
+            <li><a href="{{ url_for('branch') }}">Branches</a></li>
+            <li><a href="{{ url_for('client') }}">Clients</a></li>
+            <li><a href="{{ url_for('accounts') }}">Accounts</a></li>
+            <li><a href="{{ url_for('transactions') }}">Transactions</a></li>
         </ul>
     </nav>
 </body>
